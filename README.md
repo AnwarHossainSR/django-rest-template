@@ -8,38 +8,45 @@ This is a Django REST API project. To get started, follow these steps:
 git clone git@github.com:AnwarHossainSR/django-ecommerce-api.git
 ```
 
-2. Create and activate a virtual environment:
+2. COpy env.example to .env file and update the environment variables:
+
+```
+cp .env.example .env
+
+```
+
+3. Create and activate a virtual environment:
 
 ```
 python3 -m venv venv
 source venv/bin/activate
 ```
 
-3. Install the project dependencies:
+4. Install the project dependencies:
 
 ```
 pip install -r requirements.txt
 ```
 
-4. Create database migrations:
+5. Create database migrations:
 
 ```
 python manage.py makemigrations
 ```
 
-5. Migrate the database:
+6. Migrate the database:
 
 ```
 python manage.py migrate
 ```
 
-6. Start the development server:
+7. Start the development server:
 
 ```
 python manage.py runserver
 ```
 
-You can now access the API at `http://localhost:8000/api/`.
+You can now access the API at `http://localhost:8000`.
 
 ### Important commands
 
