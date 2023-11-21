@@ -31,7 +31,7 @@ INSTALLED_APPS = [
     # documentation
     'drf_spectacular',
     # apps
-    'mapapi',
+    'todo',
 ]
 
 REST_FRAMEWORK = {
