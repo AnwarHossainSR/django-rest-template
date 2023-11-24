@@ -33,3 +33,11 @@ update: install migrate;
 .PHONY: lint
 lint:
 	poetry run flake8 --exclude=migrations,venv
+
+.PHONY: precommit-install
+precommit-install:
+	poetry run pre-commit install
+
+.PHONY: precommit-run
+precommit-run:
+	poetry run pre-commit run --all-files
