@@ -138,8 +138,8 @@ CORS_ALLOWED_ORIGINS = [
 # drf_spectacular settings
 
 SPECTACULAR_SETTINGS = {
-    'TITLE': 'Zenrin map API',
-    'DESCRIPTION': 'API for Zenrin map',
+    'TITLE': 'Rest API',
+    'DESCRIPTION': 'API for Rest',
     'VERSION': '1.0.0',
     'SERVE_INCLUDE_SCHEMA': True,
     'PERSIST_AUTH': True,
