@@ -30,5 +30,6 @@ test:
 update: install migrate;
 
 # Path: Makefile
+.PHONY: lint
 lint:
 	poetry run flake8 --exclude=migrations,venv
