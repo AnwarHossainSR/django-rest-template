@@ -2,6 +2,14 @@
 install:
 	poetry install
 
+.PHONY: pre-commit-install
+precommit-install:
+	poetry run pre-commit uninstall; poetry run pre-commit install
+
+.PHONY: precommit-run
+precommit-run:
+	poetry run pre-commit run --all-files
+
 .PHONY: run
 run:
 	poetry run python manage.py runserver
@@ -34,10 +42,3 @@ update: install migrate;
 lint:
 	poetry run flake8 --exclude=migrations,venv
 
-.PHONY: precommit-install
-precommit-install:
-	poetry run pre-commit install
-
-.PHONY: precommit-run
-precommit-run:
-	poetry run pre-commit run --all-files
