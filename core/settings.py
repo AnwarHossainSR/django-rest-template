@@ -9,12 +9,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-ebn5s9q(dfg*^%$#hjh)wjj0esf7y_7{0dfg_!yt}hbzm4e!7r@6hd*5"
+SECRET_KEY = config('DJANGO_SECRET_KEY')
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DJANGO_DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ['*']
+
 
 # Application definition
 
@@ -66,19 +68,21 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "core.wsgi.application"
+
+WSGI_APPLICATION = 'core.wsgi.application'
+
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "django_rest_template",
-        "USER": "postgres",
-        "PASSWORD": "postgres",
-        "HOST": "db",  # Use the service name from docker-compose.yml
-        "PORT": "5432",
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': config('DB_NAME'),
+        'USER': config('DB_USER'),
+        'PASSWORD': config('DB_PASS', default=''),
+        'HOST': config('DB_HOST'),
+        'PORT': config('DB_PORT', default=''),
     }
 }
 
@@ -87,20 +91,20 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        "NAME":
-        "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
+        'NAME':
+        'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
     },
     {
-        "NAME":
-        "django.contrib.auth.password_validation.MinimumLengthValidator",
+        'NAME':
+        'django.contrib.auth.password_validation.MinimumLengthValidator',
     },
     {
-        "NAME":
-        "django.contrib.auth.password_validation.CommonPasswordValidator",
+        'NAME':
+        'django.contrib.auth.password_validation.CommonPasswordValidator',
     },
     {
-        "NAME":
-        "django.contrib.auth.password_validation.NumericPasswordValidator",
+        'NAME':
+        'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
 
@@ -123,55 +127,50 @@ STATIC_URL = "static/"
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # cros
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-    "http://127.0.0.1:3000",
-    "http://127.0.0.1:8000",
+    'http://localhost:3000', 'http://127.0.0.1:3000', 'http://127.0.0.1:8000'
 ]
 
 # drf_spectacular settings
 
 SPECTACULAR_SETTINGS = {
-    "TITLE":
-    "Zenrin map API",
-    "DESCRIPTION":
-    "API for Zenrin map",
-    "VERSION":
-    "1.0.0",
-    "SERVE_INCLUDE_SCHEMA":
+    'TITLE':
+    'Rest API',
+    'DESCRIPTION':
+    'API for Rest',
+    'VERSION':
+    '1.0.0',
+    'SERVE_INCLUDE_SCHEMA':
     True,
-    "PERSIST_AUTH":
+    'PERSIST_AUTH':
     True,
-    "SCHEMA_PATH_PREFIX":
-    r"/api/v1/",
-    "CONTACT": {
-        "name": "API Support",
-        "url": "http://www.example.com/support",
-        "email": "admin@admin.com",
+    'SCHEMA_PATH_PREFIX':
+    r'/api/v1/',
+    'CONTACT': {
+        'name': 'API Support',
+        'url': 'http://www.example.com/support',
+        'email': 'admin@admin.com',
     },
     "LICENSE": {
         "name": "MIT",
         "url": "https://opensource.org/licenses/MIT",
     },
-    "SERVERS": [
-        {
-            "url": "http://localhost:8000/",
-            "description": "Local Server"
-        },
-        {
-            "url": "https://example.com/",
-            "description": "Production Server"
-        },
-    ],
-    "SWAGGER_UI_SETTINGS": {
-        "persistAuthorization": True,
+    'SERVERS': [{
+        'url': 'http://localhost:8000/',
+        'description': 'Local Server'
+    }, {
+        'url': 'https://example.com/',
+        'description': 'Production Server'
+    }],
+    'SWAGGER_UI_SETTINGS': {
+        'persistAuthorization': True,
         # 'COMPONENT_SPLIT_REQUEST': True
     },
-    "CAMELIZE_NAMES":
+    'CAMELIZE_NAMES':
     True,
-    "EXPAND_FIELDS_BY_DEFAULT":
+    'EXPAND_FIELDS_BY_DEFAULT':
     False,
 }
