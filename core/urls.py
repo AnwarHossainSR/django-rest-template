@@ -9,11 +9,15 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path(api_v1_prefix, include('todo.urls')),
     # Optional UI:
-    path(api_v1_prefix, include([
-         path('schema', SpectacularAPIView.as_view(), name='schema'),
-         ])),
-    path('', SpectacularSwaggerView.as_view(
-        url_name='schema'), name='swagger-ui'),
+    path(
+        api_v1_prefix,
+        include([
+            path('schema', SpectacularAPIView.as_view(), name='schema'),
+        ])),
+    path('',
+         SpectacularSwaggerView.as_view(url_name='schema'),
+         name='swagger-ui'),
     path(api_v1_prefix + 'schema/redoc',
-         SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
+         SpectacularRedocView.as_view(url_name='schema'),
+         name='redoc'),
 ]

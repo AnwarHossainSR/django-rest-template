@@ -8,7 +8,7 @@ This is a Django REST API project. To get started, follow these steps:
 git clone git@github.com:AnwarHossainSR/django-ecommerce-api.git
 ```
 
-2. COpy env.example to .env file and update the environment variables:
+2. Copy env.example to .env file and update the environment variables:
 
 ```
 cp .env.example .env
